@@ -1,0 +1,113 @@
+Received: from wflow1-smtp.messagingengine.com (64.147.123.136)
+        by cloudflare-email.net (unknown) id 33dcki47grhS
+        for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 14:32:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; cv=none;
+	b=Am3JwXnMJmITi4kOZcMDfiEqmRk/gvHpG7x7DU/qSBz6xYhXAn0AsaXuKm5yW6KyEZEnRl7OY
+	UPmf9Vs9+Mw0fPBQJFzcxI6k/m+ezY/ZWSgubOPCzCTRBi+CcMjl2o10rZ5L6PCyKKkzG+xP4Ot
+	m2mkOpW2w5n4y9v4LSrSYpekXAyTexH0fFaIS7dXop0O+JtsArBJLh9S4EBBj2PsgGnipk3u1v0
+	DZGk/93u41JEaf5NuVejOVfjwjm1wdV+Y7g2eC/H6fxCDe426pmDdicye0nOvGIEusP3Dp1pJ8J
+	ZbZlqSYKkManJ1iMT9XGzZ6C2qgman5jq8AUulY9Py0w==;
+ARC-Message-Signature: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; c=relaxed/relaxed;
+	h=Subject:To:From:Date:reply-to:cc:resent-date:resent-from:resent-to
+	:resent-cc:in-reply-to:references:list-id:list-help:list-unsubscribe
+	:list-subscribe:list-post:list-owner:list-archive; t=1717165952;
+	x=1717770752; bh=nlJ0u03M2HnhaqwMAoHzg5orw40czt2ObnlXtc8JG00=; b=VXVMv97lmo
+	QkeLHKMGsxpF4Gq5V7rXF3oObfyHIcYYVEmJJ6/tByPXr82IBTnnXwVTFX2+H3gyJDsHLiR9EDi
+	hPxZTCELn43/S/xH54NyOyvK6kDZwS7NOcktVkRMZybbnYPdtExbDwz2PQqAWapXZn3Kub+Ae75
+	eRR0LTiLaPVUU+K3PDrEwoBVuhjteGmhjkpJ5EdQ1EprYdYRyP6V5qrzN2SVKIhmGRLFajfQ96+
+	nQJwzCNPFewsP+s5r2E+Saa27GlA3r+p8dEKfTkDw0Bu63XC1MX6XIHQlZIcnWbjusXp1XR2lr4
+	WvK8Uwi7WgQhEEE2p3AreqS57rnxt3iQ==;
+ARC-Authentication-Results: i=1; mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=eY+0iE0T;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=LP7HeSzQ;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received-SPF: pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender)
+	receiver=mx.cloudflare.net; client-ip=64.147.123.136; envelope-from="e01n@fastmail.com"; helo=wflow1-smtp.messagingengine.com;
+Authentication-Results: mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=eY+0iE0T;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=LP7HeSzQ;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailflow.west.internal (Postfix) with ESMTP id 5FC962CC00B5
+	for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 10:32:31 -0400 (EDT)
+Received: from imap53 ([10.202.2.103])
+  by compute6.internal (MEProxy); Fri, 31 May 2024 10:32:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm1;
+	 t=1717165951; x=1717169551; bh=nlJ0u03M2HnhaqwMAoHzg5orw40czt2O
+	bnlXtc8JG00=; b=eY+0iE0Tkf9V9KOJLD8C9D+bnuUj/Q3a1nq20j/ndB2xyELk
+	j9n7xKsYaBROE7u/q6ONn5Nq4hg0DGmDpQC92BO0fMQIVrljd/TGJWOxw07rwDbM
+	qw5tNf5yPdZfWSqhL9uPeWJvY3YWl3733dem7mHTF6QehD+guStlBg3C7qdZPyY5
+	gh6UnJhM3LEVzPdseHNa2IQQMigq4ks6OwgscwFnzGi3WYImq9/Zj5owOka9AwND
+	Yric7J/ZqhbhrGwsZjUQX8rFkCAPZCz/wzDuw/ZSTDD/209SMWd2T7YuODs0lOy5
+	T1CpLbmQRMSe1/wlbI2gZiCl2/yRCtScc6ohcA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i5d594973.fm1;
+	 t=1717165951; x=1717169551; bh=nlJ0u03M2HnhaqwMAoHzg5orw40czt2O
+	bnlXtc8JG00=; b=LP7HeSzQa4UrW1rtoADWnhEBHNAfwp9uqDsKOZU52mztEMRr
+	LmkBGC+l7qVialLv9O+uafohNIApxK8twtBntWHzIyihr9jRPK+tlK2shKnY2t7d
+	xo/S4KzfJkwFj4Cn+a54aalQF79NX21oxLkng36y7bazAdCwQlcuon1tU7JzwN0J
+	b/DmhU5Al4zDz1fO1u8dGHgSdT3xOFTW6CuwQfqRPEkVxkUA26O1/WjG1HLnJhuh
+	Q6aKRZqRKnnCmWMPOhbzKTyH3GMUbNwZZJEZXhc3xNoy00oFYWR3aRbHBPKd8LmI
+	omKKstfkG/s9BGSF1ZxD6d9Nf8CDYBew7N8cqg==
+X-ME-Sender: <xms:ft9ZZpSXNDQAUbdwI7c5QvpKFpuP0Uuyn1XSUt6k9M6244Tk3-LYqg>
+    <xme:ft9ZZiye-daY7lBEZ_5aO1htSHirily2Bmo7wPKkwDGLJCTeVC_UuLqSlSFNpfbKK
+    XaVCIiLcyTkZIyiy9I>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdekiedgjeeiucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpefofgggkfffhffvufgtsehmtderre
+    erredtnecuhfhrohhmpegvohhinhcuoegvtddunhesfhgrshhtmhgrihhlrdgtohhmqeen
+    ucggtffrrghtthgvrhhnpefhfeeijeeludeukeegudduueekieehgfeludfgieeludetfe
+    euhfduuefgudduvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
+    fhhrohhmpegvtddunhesfhgrshhtmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:ft9ZZu04VLyVH26fv0yU9SiI27XQ3rbRnEdZbj2rwXcZ5vJzoL7pEA>
+    <xmx:ft9ZZhCXYCBXg_gnqzZTmdWDIhIq2nWKigHTHq_m4iS8ZtTaNx0UgQ>
+    <xmx:ft9ZZih23O9mXurIOk85PAwLPorSf_O_o9ibBxbXt_qomm90F0JCSQ>
+    <xmx:ft9ZZlrbzFC3LnFc2AYCttplOJ6ie55WQovGRGlaSaex6rWI3j37yg>
+    <xmx:ft9ZZtSiZXDUEPjU-zUEtTvxHtH2hIt7JqD0ecYwscdefUwYffk_mugN>
+Feedback-ID: i5d594973:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id 982943640071; Fri, 31 May 2024 10:32:30 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-491-g033e30d24-fm-20240520.001-g033e30d2
+MIME-Version: 1.0
+Message-Id: <171bbbbb-0736-46b1-beef-551cb3291423@app.fastmail.com>
+Date: Fri, 31 May 2024 16:32:09 +0200
+From: eoin <e01n@fastmail.com>
+To: cassie <cassie@laptop.e01n.dev>
+Subject: text file
+Content-Type: multipart/mixed;
+ boundary=efd2f83df6c747cca0aa114572cd2165
+
+--efd2f83df6c747cca0aa114572cd2165
+Content-Type: multipart/alternative;
+ boundary=982fb284dbab4b1386221ff18019aba6
+
+--982fb284dbab4b1386221ff18019aba6
+Content-Type: text/plain
+
+whats in the attached file
+--982fb284dbab4b1386221ff18019aba6
+Content-Type: text/html
+
+<!DOCTYPE html><html><head><title></title><style type="text/css">p.MsoNormal,p.MsoNoSpacing{margin:0}</style></head><body><div>whats in the text file<br></div></body></html>
+--982fb284dbab4b1386221ff18019aba6--
+
+--efd2f83df6c747cca0aa114572cd2165
+Content-Disposition: attachment; filename="file.txt"
+Content-Type: text/plain; name="file.txt"
+Content-Transfer-Encoding: BASE64
+
+aGVsbG8gd29ybGQ=
+
+--efd2f83df6c747cca0aa114572cd2165--

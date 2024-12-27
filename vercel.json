@@ -1,0 +1,13 @@
+{
+  "crons": [
+    {
+      "path": "/api/generate-ai-responses",
+      "schedule": "* * * * *"
+    },
+    {
+      "path": "/api/send-responses",
+      "schedule": "* * * * *"
+    }
+  ],
+  "regions": ["fra1"]
+}

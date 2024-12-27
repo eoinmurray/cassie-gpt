@@ -1,0 +1,6 @@
+
+
+> cassie-gpt@--prod build
+> bun ./src/actions/remote-load-env.ts; prisma generate > /dev/null && echo 'prisma generate finished'; next build --filter notebooks
+
+[1G[0K

@@ -1,0 +1,38 @@
+{
+  "node": {
+    "4722d3b6ebbce89f20a5bc3e3fb44bb3d059ef5c": {
+      "workers": {
+        "app/(authed)/[assistantId]/[threadId]/page": "(rsc)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fmessage-card.tsx%22%2C%5B%22default%22%5D%5D%2C%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fheader.tsx%22%2C%5B%22%24%24ACTION_1%22%2C%22default%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(authed)/[assistantId]/[threadId]/page": "rsc"
+      }
+    },
+    "4a93a432113ed35c41137725d3f29adf71a8806c": {
+      "workers": {
+        "app/(authed)/[assistantId]/[threadId]/page": "(rsc)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fmessage-card.tsx%22%2C%5B%22default%22%5D%5D%2C%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fheader.tsx%22%2C%5B%22%24%24ACTION_1%22%2C%22default%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(authed)/[assistantId]/[threadId]/page": "rsc"
+      }
+    },
+    "a1c7a12c03b596773504b25a67c5660ed7b72b1d": {
+      "workers": {
+        "app/(authed)/[assistantId]/[threadId]/page": "(rsc)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fmessage-card.tsx%22%2C%5B%22default%22%5D%5D%2C%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fcomponents%2Fheader.tsx%22%2C%5B%22%24%24ACTION_1%22%2C%22default%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/(authed)/[assistantId]/[threadId]/page": "rsc"
+      }
+    },
+    "093ea68a5cb03d6065299fb43ad34dd018aa3816": {
+      "workers": {
+        "app/login/page": "(rsc)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Feoinmurray%2Fe01n.dev%2Fapps%2Fcassie-gpt%2Fsrc%2Fapp%2Flogin%2Fpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/login/page": "rsc"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "WUPiJGIuz0jO/KncwC0BQCq12qykuT7ca38rB6b+rVQ="
+}

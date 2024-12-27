@@ -1,0 +1,100 @@
+Received: from wflow1-smtp.messagingengine.com (64.147.123.136)
+        by cloudflare-email.net (unknown) id F6uLgP9i1wAn
+        for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 14:24:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; cv=none;
+	b=Hu5Fohw7g7GYFh0EMCl72vzsv5BCEJnrqEGBXhQdvyMdyKY1E8lMs3JUbNRoqtw8OwLZwhvFk
+	aVDmjA1JPWyhhj8q7TvuSps9VkdTvPaKKi7Y5JV463QcdpL6GO+lTeSW9xATvqAFxUuxDv474D7
+	upg/Dl257PCOYwCUlPAKIWxyoyfjKwLDTP7SfhaBwtgBvFCJlRLxIKEHgpig0i2qwDpG/9CSgCl
+	DKAY+Jmve42p8g5cD0JAYZ9lPHwwsmklXPvaWUGzdaRtX7UdT2lkBZLhj/oAI/sUZpCZ2guidT5
+	wcO7EDlp4oW74IS6ea7Zy7+02YTMvyfVPj426xLbkMag==;
+ARC-Message-Signature: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; c=relaxed/relaxed;
+	h=Subject:To:From:Date:reply-to:cc:resent-date:resent-from:resent-to
+	:resent-cc:in-reply-to:references:list-id:list-help:list-unsubscribe
+	:list-subscribe:list-post:list-owner:list-archive; t=1717165463;
+	x=1717770263; bh=4VCEOAdYpWT/YyOrHmea4+htoRW9A/38L1SBnxF4agU=; b=Gm8C+6CB1j
+	XtOFi9EldP8Vk0AU/Fxd+mcpvxB/z8QbshQoH4reYwLTI9PjYZRheqeg6P57NxzR5tEPGTxnlQ9
+	cR5CLVs4kQ3RXAh5JhE6IyXJni1MRugNp2RBVHN/qk7q/cXwXdDl9qqlcyQNkxcjpGCq24s3UKJ
+	nrtpuEh/kg+lqxfGzgLGGoH9uFxuniKXwTGaKYNCT+jPbFQinro4Ae4uYa1ajxybRm/QmOuLUL2
+	3ScZ7E/yCJn3/e/DxuiZL7+YHQ3SzQtsofGQZDW5xuHOPHM5u+j/gvI45v8YOiyxcKp46Fk/JtG
+	eUpuIZ4M7WxdiJwcjGe0bKZ6x/brGg+w==;
+ARC-Authentication-Results: i=1; mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=Y4/4z1N7;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=p25O+xZp;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received-SPF: pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender)
+	receiver=mx.cloudflare.net; client-ip=64.147.123.136; envelope-from="e01n@fastmail.com"; helo=wflow1-smtp.messagingengine.com;
+Authentication-Results: mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=Y4/4z1N7;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=p25O+xZp;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailflow.west.internal (Postfix) with ESMTP id 841CF2CC0173
+	for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 10:24:22 -0400 (EDT)
+Received: from imap53 ([10.202.2.103])
+  by compute6.internal (MEProxy); Fri, 31 May 2024 10:24:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm1;
+	 t=1717165462; x=1717169062; bh=4VCEOAdYpWT/YyOrHmea4+htoRW9A/38
+	L1SBnxF4agU=; b=Y4/4z1N7mxEy0V5eXTR6MqUf50n8JK/2RMKMzjjxrGTMxw92
+	FP0OTpG9czGmbHk4RXKZ1BQSUPFYuL6JAJxkqziHw65bT5jvEta8nLJtLiujzk02
+	oiJN9Y+7HWg4p6ULG0Zb7Xz/2OPUDhYuMdcBDsirOmnYtwp5p/TP0w4IfucuHqmZ
+	85MLKyj/wBg168lts9VygYUpa7sH756YOQYZdQEUxFS2wNs78XOlUsmpVeviOoxm
+	kc+FCULAu0O6Nl9K2T4AeZEmnanUD8Zvq+7MfxFedNrJAZQqNKqXSkhDDCF5Ftuo
+	8iOacGbSL1tcO61i0+AamBLrYRw7Gw0Ors5Z5A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i5d594973.fm1;
+	 t=1717165462; x=1717169062; bh=4VCEOAdYpWT/YyOrHmea4+htoRW9A/38
+	L1SBnxF4agU=; b=p25O+xZpx0Zoq5mc/Wtkxd5Vq72j4bCPyomeLeY4/GsnX/zp
+	lhfA3hQUsE4dWUxFERdUNTRcE+QYE4L8zGi7cobupqek2Chjf/Ezpa49sqVzuquW
+	durHfgfSqhrHMF3ydrZMy82KzwzD7ziXKU1mAJ7YPt732enpGp4V+V+IGdle0W3Z
+	i0dg385QA2c0Pfv+LrM5PzNzN2XZmz6LN5SPTgSBuXDiEMq4+IsWUUqzdRa254f6
+	qP3jgKdPF2fTLlXkl0t+lxCEwQkAEHHD2L06//QnsSQ43+NYhMlTW8oPCfs8oQUP
+	2zosp1vrIxNIlh/fa2pAeyFN7z/A+p0m7lyt3A==
+X-ME-Sender: <xms:ld1ZZnNGKT9XKYNcd4tY6_hUbedSeZN7vhIrdKr9dGeq9TnwLPw-_A>
+    <xme:ld1ZZh9t2O0sZLlYX47LIyyJxUGSwpPICwEjKy0clW_MGx0FKLxFGoiKPMIhYNnBm
+    PvybQOXy5PBe8iNHk4>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdekiedgjeegucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpefofffkfggghffvufgtsehttdertd
+    erredtnecuhfhrohhmpegvtddunhesfhgrshhtmhgrihhlrdgtohhmnecuggftrfgrthht
+    vghrnhepudeujeejueduueefvdeihfdvvdfhtdfgkedufeektdeugefgieelhffgtdegte
+    eunecuvehluhhsthgvrhfuihiivgepfeenucfrrghrrghmpehmrghilhhfrhhomhepvgdt
+    udhnsehfrghsthhmrghilhdrtghomh
+X-ME-Proxy: <xmx:lt1ZZmSoJCk7EXubPAsjzmX9q0MXAVgTM2cYVimlEezR8BaKfQS63w>
+    <xmx:lt1ZZrv2-KzI6X1fJ3yVRXXRJKQGDLlG5zkBCvnayJFKi8ccpq8lTw>
+    <xmx:lt1ZZvfTVC6ufR3Nd9scgrybz-YAIztJi5ZXByfLVgeJX2CML2ZfrQ>
+    <xmx:lt1ZZn3GKAujwSIWA3B627buIkXRp5ePET3NC-s4MPQjZDECY0fFnQ>
+    <xmx:lt1ZZi9yaECJg1ro50BxaXgCvZj-w9GZzDxN4PjcSkb02FbDW3qrVTkI>
+Feedback-ID: i5d594973:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id DC746364006F; Fri, 31 May 2024 10:24:21 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+Date: Fri, 31 May 2024 10:24:21 -0400
+Message-Id: <91172a4c-21c2-435c-bfea-5982735a84d1@sloti53n16>
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-491-g033e30d24-fm-20240520.001-g033e30d2
+MIME-Version: 1.0
+From: e01n@fastmail.com
+To: cassie@laptop.e01n.dev
+Subject: Hello, world - vt3tzu!
+Content-Type: text/plain
+
+Hi! 
+
+This email may not look like much, but I sent it with JMAP, a protocol 
+designed to make it easier to manage email, contacts, calendars, and more of 
+your digital life in general. 
+
+Pretty cool, right? 
+
+-- 
+This email sent from my next-generation email system at Fastmail. 

@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id            String      @id @default(cuid())
+  email         String      @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  assistants    Assistant[]
+  threads       Thread[]
+  messages      Message[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+  @@id([identifier, token])
+}
+
+model Assistant {
+  id                String   @id @default(cuid())
+  alias             String   @unique
+  assistantId       String
+  createdAt         DateTime @default(now())
+  threads           Thread[]
+  messages          Message[]
+  openai_key        String
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Thread {
+  id          String    @id @default(cuid())
+  threadId    String
+  alias       String
+  createdAt   DateTime  @default(now())
+  messages    Message[]
+  // have side effects in code
+  user            User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String? 
+  assistant       Assistant? @relation(fields: [assistantId], references: [id])
+  assistantId     String?
+}
+
+model Message {
+  id                 String     @id @default(cuid())
+  messageId          String
+  existingInReplyTo  String[] @default([])
+  existingReferences String[] @default([])
+  headers            String
+  createdAt          DateTime   @default(now())
+  sentAt             DateTime?
+  resendId           String?
+  receivedMessage    String
+  outboundMessage String?
+  fromEmail       String
+  locked          Boolean    @default(false)
+  toEmails        String
+  ccEmails        String
+  bccEmails       String
+  replyToEmails   String
+  subject         String
+  cleanedSubject  String
+  
+  // have side effects in code
+  user            User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String? 
+  thread          Thread?    @relation(fields: [threadId], references: [id])
+  threadId        String?
+  assistant       Assistant? @relation(fields: [assistantId], references: [id])
+  assistantId     String?
+  fileIds         String[]   @default([])
+}

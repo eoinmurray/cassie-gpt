@@ -1,0 +1,4 @@
+{
+  "/login/page": "app/login/page.js",
+  "/(authed)/[assistantId]/[threadId]/page": "app/(authed)/[assistantId]/[threadId]/page.js"
+}

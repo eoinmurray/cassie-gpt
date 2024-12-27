@@ -1,0 +1,145 @@
+Received: from wflow1-smtp.messagingengine.com (64.147.123.136)
+        by cloudflare-email.net (unknown) id OEHY3S8KcBpC
+        for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 14:25:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; cv=none;
+	b=W25GNHDnXyTw7WtNH6V2oJhffAiyIFXWWNsoqgnKvNNZlDO8wp+WCSQRDk7TwdM1lqZpqB2BP
+	TArLSUkKNQsSEmYqBog2Dkh6CEVU0giOKTfYNB4ioFDumDauNtFrXcuFdOrgSADRc+k6OHcdGvq
+	WKX1Im4vGDZTuopjdGOru4Ux6ak3wkIuZHvkEbY4SFjDwjSqKgzzfPL/5nmZK/rumOgv0oY3d2l
+	2VD52MIGqyGb2RmyOWNOPu6Rvf1nCT32FsH3CfN+zNY2vEiBxMOlvoqOXVbvu4xz+ZPZkZwYxIl
+	ApNcoqbH3mcJgXSTRPiz3TBj9yAIaWiuKwHMr1iDei8w==;
+ARC-Message-Signature: i=1; a=rsa-sha256; s=2023; d=cloudflare-email.net; c=relaxed/relaxed;
+	h=Subject:To:From:Date:reply-to:cc:resent-date:resent-from:resent-to
+	:resent-cc:in-reply-to:references:list-id:list-help:list-unsubscribe
+	:list-subscribe:list-post:list-owner:list-archive; t=1717165511;
+	x=1717770311; bh=bdR0aiXQoizEuXuf8flHQD90JmE4+831ogi9cRGfkIE=; b=pf2OHSF3aK
+	CNjV5AbKpFCHkuiB5sfvQ9I9mgkB4JgTfMjitzG12DYF/wUTsKLIyI3G2qW4zptgBcAYOZlL9pl
+	/hB1pnR6IC4p60ORxUaLalvmfB6/7rAC3zS11GYrROJsRhor1RzlwE16p8OppuXj9oBylis8WcT
+	z/SjRwyvTW7uKARnE6BS701Ccb4XO6ftVdcmaeT5hhXux2VCPM/KFEx6u7I322Knp5nyUC11nnP
+	kobG+fojfgjp4tHpy9jHr294dGZ6Nnz1DDkv5qhiNuUEyeT/18eRIUzpkWKpBul3BxvM6eqJlzy
+	jwlF1OHtBhkzd470yZ6qeca4E87NHydg==;
+ARC-Authentication-Results: i=1; mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=lW0WQhG+;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=bi9T4fUu;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received-SPF: pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender)
+	receiver=mx.cloudflare.net; client-ip=64.147.123.136; envelope-from="e01n@fastmail.com"; helo=wflow1-smtp.messagingengine.com;
+Authentication-Results: mx.cloudflare.net;
+	dkim=pass header.d=fastmail.com header.s=fm1 header.b=lW0WQhG+;
+	dkim=pass header.d=messagingengine.com header.s=i5d594973.fm1 header.b=bi9T4fUu;
+	dmarc=pass header.from=fastmail.com policy.dmarc=none;
+	spf=pass (mx.cloudflare.net: domain of postmaster@wflow1-smtp.messagingengine.com designates 64.147.123.136 as permitted sender) smtp.helo=wflow1-smtp.messagingengine.com;
+	spf=pass (mx.cloudflare.net: domain of e01n@fastmail.com designates 64.147.123.136 as permitted sender) smtp.mailfrom=e01n@fastmail.com;
+	arc=none smtp.remote-ip=64.147.123.136
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.47])
+	by mailflow.west.internal (Postfix) with ESMTP id 965772CC0177
+	for <cassie@laptop.e01n.dev>; Fri, 31 May 2024 10:25:10 -0400 (EDT)
+Received: from imap53 ([10.202.2.103])
+  by compute6.internal (MEProxy); Fri, 31 May 2024 10:25:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:content-type:content-type:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:subject:subject:to:to; s=fm1;
+	 t=1717165510; x=1717169110; bh=bdR0aiXQoizEuXuf8flHQD90JmE4+831
+	ogi9cRGfkIE=; b=lW0WQhG+hqwXIA58oyNSw5B3uqd0A76CUpsMhmpX+FKzB1N+
+	rtSwL74MTEiTgXToYYR7V2Yvi0k5IK+7Zp8Tv1M51n8eNu2GOaudknBiil5p+hOH
+	aAHrU8FVjG82UrVu30OWIfHJDp4DsvmV3jW347lqJ04WoCH3cuWSo4b+x6bezKct
+	VsR5+Lp26GgWeIYjfoYU4F+Qo+Yz9nirnA/zNLBa7Mryt6tunz6v2YiHQexGMtaL
+	gEAahp7mBlnm8NyfK8Fu97wqqvLOUGAZhEQS9b/n8oV6KAUu8+WK74iS844ghwzR
+	JDXysKG4kvsJkber5XnIbhT8XXLNPW9VnupiyA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=i5d594973.fm1;
+	 t=1717165510; x=1717169110; bh=bdR0aiXQoizEuXuf8flHQD90JmE4+831
+	ogi9cRGfkIE=; b=bi9T4fUuWU/DXOcw9etu5XNEG7/A9ZUCxfQY46Nr/K3XlgDs
+	9W5qnUIuLPoJkkrOnBmeaCIrvnptgpj0p7wD2bipioz3Hj09dh2ol+1jGgh2VaEi
+	ZdcQ+iUK4Ji7kXb0RJtuCOf7hwbrjqPAf3LxgDBDEG6NhcVSNYkZBRZ7FfWSKC3h
+	u179Fmgap93Y5rD7Z1Sfp8gFahEyvE0amyTEj1S6bRz0XyuiPKB1LSO0hIfzkfcL
+	XUkUasYd2aQvDTF4jmB9VELAo4NX1UOL2uu/n31cu97vkhYptQaj58sMtwPIaMyV
+	wXeG+uTICLNmo3DCNOH27CGvDSt92WNrmAG7CA==
+X-ME-Sender: <xms:xt1ZZjKoULgffpJN9C9YjobVTaaWahLGySJI8Wm_JJhwD-C6LiVJyw>
+    <xme:xt1ZZnKlgqNmh0xonPpC6Yx6aHLnJgG1YEmP5yY_W4N6UMXl8XpV1V20amHCOPwX3
+    751ou8rNWKJmWWEZ2I>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvledrvdekiedgjeegucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucenucfjughrpefofgggkfffhffvufgtsehmtderre
+    erredtnecuhfhrohhmpegvohhinhcuoegvtddunhesfhgrshhtmhgrihhlrdgtohhmqeen
+    ucggtffrrghtthgvrhhnpefhfeeijeeludeukeegudduueekieehgfeludfgieeludetfe
+    euhfduuefgudduvdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhl
+    fhhrohhmpegvtddunhesfhgrshhtmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:xt1ZZrs1vVfmvv_MqCNGkb_-tFbcagODq9wAMIkw4hCbo8UI-EzDYg>
+    <xmx:xt1ZZsZOHVGwjrPeCPdh2QxAzLPRYoELpeI0w1rSz9A3kSSRN5zuVw>
+    <xmx:xt1ZZqYyDG0IVVV10lEVEYIQX9ks_gxFecxg6e9jtoS3uJ69h75b3A>
+    <xmx:xt1ZZgBRoYlPEO0qapZGL_3mTuBTUkWPnIGHiodWekFngvBXq6_i6A>
+    <xmx:xt1ZZupfYuKjZmBdOEUwG0CrE5CaLpt8G1H2ilxzr-93cZzdGjKhbo2J>
+Feedback-ID: i5d594973:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+	id F07623640070; Fri, 31 May 2024 10:25:09 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.11.0-alpha0-491-g033e30d24-fm-20240520.001-g033e30d2
+MIME-Version: 1.0
+x-forwarded-message-id: 
+ <add3a29b-4eb9-4038-8f44-05fb89805a74@app.fastmail.com>
+Message-Id: <ea875c06-46fb-45ec-b7cc-64196aabe1f0@app.fastmail.com>
+Date: Fri, 31 May 2024 16:24:49 +0200
+From: eoin <e01n@fastmail.com>
+To: cassie <cassie@laptop.e01n.dev>
+Subject: Fwd: test file test #e98dh3
+Content-Type: multipart/mixed;
+ boundary=93924099bea74ab5bef8e101c7357d1f
+
+--93924099bea74ab5bef8e101c7357d1f
+Content-Type: multipart/alternative;
+ boundary=fbf7eb3a2ce6461ca46c0955068c080b
+
+--fbf7eb3a2ce6461ca46c0955068c080b
+Content-Type: text/plain
+
+whats in the attached file?
+
+
+--fbf7eb3a2ce6461ca46c0955068c080b
+Content-Type: text/html
+
+<!DOCTYPE html><html><head><title></title><style type="text/css">
+p.MsoNormal,p.MsoNoSpacing{margin:0}</style></head><body><div>whats in the attached file?<br></div><div type="cite" id="qt" style=""><div><br></div><div><br></div></div></body></html>
+--fbf7eb3a2ce6461ca46c0955068c080b--
+
+--93924099bea74ab5bef8e101c7357d1f
+Content-Disposition: attachment; filename="file.pdf"
+Content-Type: application/pdf; name="file.pdf"
+Content-Transfer-Encoding: BASE64
+
+JVBERi0xLjMKMyAwIG9iago8PC9UeXBlIC9QYWdlCi9QYXJlbnQgMSAwIFIKL1Jlc291cmNl
+cyAyIDAgUgovQ29udGVudHMgNCAwIFI+PgplbmRvYmoKNCAwIG9iago8PC9GaWx0ZXIgL0Zs
+YXRlRGVjb2RlIC9MZW5ndGggNDYzPj4Kc3RyZWFtCnichZLNktMwEITv+xRzhKpE+Cf2Jlco
+qFo4Yh5AkSbxsLLk0sh4vU/P2I53K1w4Wpa6v+meAr4/ZKp6hPHhcwOfvuWQ1yrLoLnA12Y+
+yutSlSd4PB3mW42FD08+xWAHkyh4SAG+hK53+EJpgp+G0Bv8CM3v2/NFsbhTPFSqrOCxPKls
+FfyPQAF5/i5QqFNdQzO+K9X1UVX5v0q8KgG+9C5EZDDrP+CJE3a8g7HFiEA+YdTLMAy6C/4K
+vY6JwaG283jYYbyiTxtTqY7H0z3AIVN5vQCcsdV/KEQFTwku5K1o9r0jo28GJgZmsCR4cuyF
+iwfTgmY4U3DhOu0ATfChIyOI2lvo24nlQ8EPnDaGTJVFdc8gGR3XEOS5wV4mIG/cYBEY3WUf
+4lV7el04dttQBlcPH/x+ptFRolPwyzt6RkhRW5rva/cW5yWYgUlCCn6DKdQhu4epjqU6rN1G
+vG0KcbfbOrjrp+tbzfQqSbTBEScyMHiLkZOQidMS5cDyP4XgpJcZTc+N7M+a0b5lco9QVSov
+FoQuWHQz8jIppjHEZ0gthjjN/XIa7CTeIzDNdBAHJ2YTobNCIvuDJqHd3RZnP5JE2uska+NZ
+be5/AXiOC70KZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1R5cGUgL1BhZ2VzCi9LaWRz
+IFszIDAgUiBdCi9Db3VudCAxCi9NZWRpYUJveCBbMCAwIDU5NS4yOCA4NDEuODldCj4+CmVu
+ZG9iago1IDAgb2JqCjw8L1R5cGUgL0ZvbnQKL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZAov
+U3VidHlwZSAvVHlwZTEKL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcKPj4KZW5kb2JqCjYg
+MCBvYmoKPDwvVHlwZSAvRm9udAovQmFzZUZvbnQgL0hlbHZldGljYQovU3VidHlwZSAvVHlw
+ZTEKL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1By
+b2NTZXQgWy9QREYgL1RleHQgL0ltYWdlQiAvSW1hZ2VDIC9JbWFnZUldCi9Gb250IDw8Ci9G
+MSA1IDAgUgovRjIgNiAwIFIKPj4KL1hPYmplY3QgPDwKPj4KPj4KZW5kb2JqCjcgMCBvYmoK
+PDwKL1Byb2R1Y2VyIChQeUZQREYgMS43LjIgaHR0cDovL3B5ZnBkZi5nb29nbGVjb2RlLmNv
+bS8pCi9DcmVhdGlvbkRhdGUgKEQ6MjAyNDA1MTEwODU3MTYpCj4+CmVuZG9iago4IDAgb2Jq
+Cjw8Ci9UeXBlIC9DYXRhbG9nCi9QYWdlcyAxIDAgUgovT3BlbkFjdGlvbiBbMyAwIFIgL0Zp
+dEggbnVsbF0KL1BhZ2VMYXlvdXQgL09uZUNvbHVtbgo+PgplbmRvYmoKeHJlZgowIDkKMDAw
+MDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNjIwIDAwMDAwIG4gCjAwMDAwMDA5MDQgMDAwMDAg
+biAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDg3IDAwMDAwIG4gCjAwMDAwMDA3MDcg
+MDAwMDAgbiAKMDAwMDAwMDgwOCAwMDAwMCBuIAowMDAwMDAxMDE4IDAwMDAwIG4gCjAwMDAw
+MDExMjcgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSA5Ci9Sb290IDggMCBSCi9JbmZvIDcg
+MCBSCj4+CnN0YXJ0eHJlZgoxMjMwCiUlRU9GCg==
+
+--93924099bea74ab5bef8e101c7357d1f--

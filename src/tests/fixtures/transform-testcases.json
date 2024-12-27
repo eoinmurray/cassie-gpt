@@ -1,0 +1,30 @@
+[
+  {
+    "incoming": {
+      "from": "user@laptop.e01n.dev",
+      "to": "testbot@e01n.dev, otheruser@sink.sendgrid.net",
+      "cc": "cc1@sink.sendgrid.net, cc2@sink.sendgrid.net",
+      "bcc": ""
+    },
+    "expected": {
+      "from": "testbot@laptop.e01n.dev",
+      "to": ["otheruser@sink.sendgrid.net", "user@laptop.e01n.dev"],
+      "cc": ["cc1@sink.sendgrid.net", "cc2@sink.sendgrid.net"],
+      "bcc": []
+    }
+  },
+  {
+    "incoming": {
+      "from": "another@domain.com",
+      "to": "testbot@laptop.e01n.dev, someone@sink.sendgrid.net",
+      "cc": "",
+      "bcc": "bcc1@sink.sendgrid.net, bcc2@sink.sendgrid.net"
+    },
+    "expected": {
+      "from": "testbot@laptop.e01n.dev",
+      "to": ["someone@sink.sendgrid.net", "another@domain.com"],
+      "cc": [],
+      "bcc": ["bcc1@sink.sendgrid.net", "bcc2@sink.sendgrid.net"]
+    }
+  }
+]

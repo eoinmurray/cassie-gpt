@@ -1,0 +1,8 @@
+name = "email-routing"
+main = "src/actions/cloudflare-email-routing.ts"
+compatibility_date = "2023-04-13"
+# node_compat=true
+
+[vars]
+DEVELOPMENT_DOMAIN="laptop.e01n.dev"
+PRODUCTION_DOMAIN="testbot.e01n.dev"
